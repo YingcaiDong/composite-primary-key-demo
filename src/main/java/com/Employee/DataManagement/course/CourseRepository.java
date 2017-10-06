@@ -11,6 +11,6 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface CourseRepository extends CrudRepository<Course, KeyId> {
 
-	public List<Course> findByTheIdTopicId(String topicId);
-	public Course findByTheIdCourseId(String courseId);
+	public List<Course> findByTopicId(String topicId);
+	public Course findByCourseId(String courseId);
 }

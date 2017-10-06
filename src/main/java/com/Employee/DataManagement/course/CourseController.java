@@ -30,20 +30,18 @@ public class CourseController {
 	
 	@RequestMapping(method=RequestMethod.POST, value="topics/{topicId}/courses")
 	public void addCourse(@RequestBody Course course, @PathVariable("topicId") String topicId) {
-		
-		course.setTheId(new KeyId("", new Topic(topicId, "", "")));
+		course.setTopic(topicId);
 		this.courseService.addCourse(course);
 	}
 	
 	@RequestMapping(method=RequestMethod.PUT, value="topics/{topicId}/courses/{id}")
 	public void updateCourse(@RequestBody Course course, @PathVariable("id") String id, @PathVariable("topicId") String topicId) {
-		course.setTheId(new KeyId("", new Topic(topicId, "", "")));
+		course.setTopic(topicId);
 		this.courseService.updateCourse(course);
 	}
 	
 	@RequestMapping(method=RequestMethod.DELETE, value="topics/{topicId}/courses/{id}")
 	public void DeleteCourse(@PathVariable String id) {
-		KeyId _id = new KeyId(id, null);
-		this.courseService.deleteCourse(_id);
+		this.courseService.deleteCourse(new KeyId(id, null));
 	}
 }
