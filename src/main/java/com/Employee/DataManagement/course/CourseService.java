@@ -14,12 +14,12 @@ public class CourseService {
 	
 	public List<Course> getAllCourses(String id) {
 		List<Course> courses = new ArrayList<>();
-		courseRepository.findByTheIdTopicId(id).forEach(courses::add);
+		courseRepository.findByTopicId(id).forEach(courses::add);
 		return courses;
 	}
 	
 	public Course getCourse(String id) {
-		return courseRepository.findByTheIdCourseId(id);
+		return courseRepository.findByCourseId(id);
 	}
 
 	public void addCourse(Course course) {
