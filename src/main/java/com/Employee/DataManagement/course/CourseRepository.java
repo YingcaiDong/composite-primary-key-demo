@@ -13,4 +13,7 @@ public interface CourseRepository extends CrudRepository<Course, KeyId> {
 
 	public List<Course> findByTheIdTopicId(String topicId);
 	public Course findByTheIdCourseId(String courseId);
+	
+	public void deleteByTheIdCourseId(String id);
+	public void deleteByTheIdTopicId(String topicId);
 }
