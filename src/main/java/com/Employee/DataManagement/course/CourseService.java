@@ -3,6 +3,8 @@ package com.Employee.DataManagement.course;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,7 +32,17 @@ public class CourseService {
 		courseRepository.save(course);
 	}
 
-	public void deleteCourse(KeyId id) {
-		courseRepository.delete(id);
+	/*
+	 * By adding this annotation
+	 * Will prevent error:  No EntityManager with actual transaction available for current thread 
+	 */
+	@Transactional
+	public void deleteCourse(String id) {
+		courseRepository.deleteByTheIdCourseId(id);
+	}
+	
+	@Transactional
+	public void deleteAllCourseUnderTopic(String topicId) {
+		courseRepository.deleteByTheIdTopicId(topicId);
 	}
 }

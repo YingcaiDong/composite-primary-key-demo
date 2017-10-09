@@ -42,7 +42,12 @@ public class CourseController {
 	}
 	
 	@RequestMapping(method=RequestMethod.DELETE, value="topics/{topicId}/courses/{id}")
-	public void DeleteCourse(@PathVariable String id) {
-		this.courseService.deleteCourse(new KeyId(id, null));
+	public void DeleteCourse(@PathVariable("id") String id) {
+		this.courseService.deleteCourse(id);
+	}
+	
+	@RequestMapping(method=RequestMethod.DELETE, value="topics/{topicId}/courses")
+	public void DeleteCourseUnderTopic(@PathVariable("topicId") String id) {
+		this.courseService.deleteAllCourseUnderTopic(id);
 	}
 }
