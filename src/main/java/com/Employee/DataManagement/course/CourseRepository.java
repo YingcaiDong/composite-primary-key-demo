@@ -10,7 +10,6 @@ import org.springframework.data.repository.CrudRepository;
  * The second generic type is the id type (AKA primary key type)
  */
 public interface CourseRepository extends CrudRepository<Course, KeyId> {
-
 	public List<Course> findByTheIdTopicId(String topicId);
 	public Course findByTheIdCourseId(String courseId);
 	
